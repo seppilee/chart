@@ -1,0 +1,225 @@
+
+<!doctype html>
+<html>
+
+<head>
+	<title>HelloTalk ROC</title>
+	<script src="./Chart.bundle.js"></script>
+	<script src="./utils.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+
+<body>
+	<div style="width:75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<script>
+		var lineChartData = {
+			labels: ['epoch 1', 'epoch 2', 'epoch 3', 'epoch 4', 'epoch 5', 'epoch 6', 'epoch 7', 'epoch 8', 'epoch 9', 'epoch 10', 'epoch 11','epoch 12', 'epoch 13', 'epoch 14', 'epoch 15', 'epoch 16', 'epoch 17', 'epoch 18', 'epoch 19', 'epoch 20','epoch 21', 'epoch 22', 'epoch 23', 'epoch 24', 'epoch 25', 'epoch 26', 'epoch 27', 'epoch 28', 'epoch 29', 'epoch 30'],
+			datasets: [{
+				label: 'Model II(Recall)',
+				backgroundColor: window.chartColors.blue,
+				borderColor: window.chartColors.blue,
+				borderWidth: 3,
+				pointStyle: 'rectRot',
+				pointRadius: 5,
+				pointBorderColor: 'rgb(0,0,139)',
+				fill: false,
+				data: [
+					20,
+					30,
+					41,
+					45,
+					50,
+					55,
+					61,
+					62,
+					60,
+					70,
+					60,
+					80,
+					81,
+					82,				
+					82,
+					82,
+					88,
+					78,
+					80,
+					81,
+					82,
+					82,
+					84
+
+				],
+				yAxisID: 'y-axis-1',
+			}, {
+				label: 'Model II(precison)',
+				backgroundColor: window.chartColors.green,
+				borderColor: window.chartColors.green,
+				borderWidth: 3,
+				pointStyle: 'rectRot',
+				pointRadius: 5,
+				pointBorderColor: 'rgb(0,100,0)',
+				fill: false,
+				data: [
+					20,
+					32,
+					32,
+					31,
+					42,
+					55,
+					55,
+					53,
+					51,
+					62,
+					63,
+					63,
+					64,
+					64,
+					61,
+					62,				
+					62,
+					62,
+					68,
+					78,
+					78,
+					71,
+					72,
+					72,
+					74
+				],
+				yAxisID: 'y-axis-2'
+			}, {
+				label: 'Model III(Precision)',
+				borderColor: window.chartColors.grey,
+				backgroundColor: window.chartColors.grey,
+				fill: false,
+				data: [
+					21,
+					31,
+					41,
+					41,
+					51,
+					55,
+					61,
+					61,
+					61,
+					71,
+					61,
+					61,
+					61,
+					62,				
+					62,
+					62,
+					68,
+					71,
+					70,
+					71,
+					72,
+					72,
+					74
+
+				],
+				yAxisID: 'y-axis-3',
+			}, {
+				label: 'Model III(Recall)',
+				borderColor: window.chartColors.cyan,
+				backgroundColor: window.chartColors.red.cyan,
+				fill: false,
+				data: [
+					10,
+					20,
+					20,
+					31,
+					41,
+					45,
+					51,
+					51,
+					61,
+					61,
+					61,
+					71,
+					71,
+					72,				
+					82,
+					82,
+					81,
+					81,
+					80,
+					81,
+					89,
+					84,
+					84
+
+				],
+				yAxisID: 'y-axis-4',
+			}]
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = Chart.Line(ctx, {
+				data: lineChartData,
+				options: {
+					responsive: true,
+					hoverMode: 'index',
+					stacked: false,
+					title: {
+						display: true,
+						fontSize: 20,
+						text: 'English Grammar Error Correction Performance'
+					},
+
+                    legend : {
+                          position: 'bottom', display: true
+                    },	
+
+					scales: {
+						yAxes: [{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'left',
+							id: 'y-axis-1',
+						}, 
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-2',
+						},
+				        {
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: false,
+							position: 'left',
+							id: 'y-axis-3',
+						}, 
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: false,
+							position: 'left',
+							id: 'y-axis-4',
+					
+
+
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						}],
+					}
+				}
+			});
+		};
+
+
+	</script>
+</body>
+
+</html>
