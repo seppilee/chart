@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///Users/cuba/PycharmProjects/chart/chart.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>HelloTalk ROC</title>
+	<script src="./HelloTalk ROC_files/Chart.bundle.js"></script><style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+	<script src="./HelloTalk ROC_files/utils.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+
+<body>
+	<div style="width:75%;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+		<canvas id="canvas" width="2136" height="1068" class="chartjs-render-monitor" style="display: block; height: 534px; width: 1068px;"></canvas>
+	</div>
+
+	<script>
+		var lineChartData = {
+			labels: ['epoch 1', 'epoch 2', 'epoch 3', 'epoch 4', 'epoch 5', 'epoch 6', 'epoch 7', 'epoch 8', 'epoch 9', 'epoch 10', 'epoch 11','epoch 12', 'epoch 13', 'epoch 14', 'epoch 15', 'epoch 16', 'epoch 17', 'epoch 18', 'epoch 19', 'epoch 20','epoch 21', 'epoch 22', 'epoch 23', 'epoch 24'],
+			datasets: [{
+				label: 'Model III(Recall)',
+				backgroundColor: window.chartColors.blue,
+				borderColor: window.chartColors.blue,
+				borderWidth: 3,
+				pointStyle: 'rectRot',
+				pointRadius: 5,
+				pointBorderColor: 'rgb(0,0,139)',
+				fill: false,
+				data: [
+						79.5389,
+						71.2144,
+						91.9414,
+						88.665,
+						88.0184,
+						81.2834,
+						94.5055,
+						87.5269,
+						92.0988,
+						90.2062,
+						87.8543,
+						89.6247,
+						91.5743,
+						90.4348,
+						93.3333,
+						91.4661,
+						91.6479,
+						90.5702,
+						89.8004,
+						93.6219,
+						89.8551,
+						91.4226,
+						92.0771,
+						89.5792,
+
+				],
+				//yAxisID: 'y-axis-1',
+			}, {
+				label: 'Model III(precison)',
+				backgroundColor: window.chartColors.green,
+				borderColor: window.chartColors.green,
+				borderWidth: 3,
+				pointStyle: 'rectRot',
+				pointRadius: 5,
+				pointBorderColor: 'rgb(0,100,0)',
+				fill: false,
+				data: [
+						47.8336,
+						51.4751,
+						43.3506,
+						60.4811,
+						65.6357,
+						78.0822,
+						59.3103,
+						69.6918,
+						64.0893,
+						60.241,
+						74.0614,
+						69.5205,
+						70.5983,
+						71.2329,
+						73.9353,
+						71.453,
+						69.8795,
+						70.5983,
+						69.4683,
+						70.1365,
+						74.3151,
+						74.7009,
+						73.6301,
+						76.4103,
+				],
+			
+			}, {
+				label: 'Model II(Precision)',
+				borderColor: window.chartColors.yellow,
+				backgroundColor: window.chartColors.yellow,
+				borderCapStyle: 'butt',
+                borderDash: [5, 5],
+				fill: false,
+				data: [
+					30,
+					35,
+					31,
+					34,
+					40,
+					44,
+					50,
+					48,
+					49,
+					50,
+					50,
+					48,
+					49,
+					51,
+					60,				
+					55,
+					59,
+					62,
+					61,
+					59,
+
+				],
+
+			}, {
+				label: 'Model II(Recall)',
+				borderColor: window.chartColors.grey,
+				backgroundColor: window.chartColors.red.grey,
+				borderCapStyle: 'butt',
+                borderDash: [5, 5],
+				fill: false,
+				data: [
+			            90,
+						91,
+						92,
+						93,
+						90,
+						89.2834,
+						90.5055,
+						91.5269,
+						92.0988,
+						90.2062,
+						88.8543,
+						92.6247,
+						90.5743,
+						91.4348,
+						90.3333,
+						91.4661,
+						92.6479,
+						93.5702,
+						92.8004,
+						93.6219,
+
+				],
+			}]
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = Chart.Line(ctx, {
+				data: lineChartData,
+				options: {
+					responsive: true,
+					hoverMode: 'index',
+					stacked: false,
+					title: {
+						display: true,
+						fontSize: 20,
+						text: 'English Grammar Error Correction Performance'
+					},
+
+                    legend : {
+                          position: 'bottom', display: true
+                    },	
+
+					scales: {
+						yAxes: [
+
+						{
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 5,
+                                max: 100
+                            },
+
+                        },
+                        
+
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: false,
+							position: 'left',
+							id: 'y-axis-1',
+						}, 
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: false,
+							position: 'left',
+							id: 'y-axis-2',
+						},
+				        {
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: false,
+							position: 'left',
+							id: 'y-axis-3',
+						}, 
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: false,
+							position: 'left',
+							id: 'y-axis-4',
+					
+
+
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: true, // only want the grid lines for one axis to show up
+							},
+						}],
+					}
+				}
+			});
+		};
+
+
+	</script>
+
+
+
+</body></html>
